@@ -133,6 +133,16 @@ class Firebase {
   */
   user = uid => this.db.ref(`users/${uid}`);
   users = () => this.db.ref('users');
+  initTestTaker = (uid) => {
+    this.db.ref(`users/${uid}/requested`).set({total: 0});
+    this.db.ref(`users/${uid}/completed`).set({total: 0});
+    this.db.ref(`users/${uid}/toGrade`).set({total: 0});
+  }
+  destrTestTaker = (uid) => {
+    this.db.ref(`users/${uid}/requested`).remove();
+    this.db.ref(`users/${uid}/completed`).remove();
+    this.db.ref(`users/${uid}/toGrade`).remove()
+  }
   /*
     * The following command should never be used while in production, simply while in development.
     * Instead, while in production, create a specific function to access the firebase storage, such as

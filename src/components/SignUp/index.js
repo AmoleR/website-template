@@ -42,10 +42,17 @@ class SignUpFormBase extends Component {
     const { username, email, passwordOne } = this.state;
     const roles = {};
     /*
-     * If you want to change the default user to student, add the line
+     * If you want to change the default user to test taker, add the lines
      ```
-     roles[ROLES.STUDENT] = ROLES.STUDENT;
+     roles[ROLES.TEST_TAKER] = ROLES.TEST_TAKER;
+     const requested = {};
+     const toGrade = {};
+     const completed = {};
+     requested["total"] = 0;
+     toGrade["total"] = 0;
+     completed["total"] = 0;
      ```
+     and follow the instructions below.
     */
 
     roles[ROLES.USER] = ROLES.USER;
@@ -59,16 +66,21 @@ class SignUpFormBase extends Component {
           .set({
             username,
             email,
-            roles
+            roles,
+            /*
+              * If you want to make the default user a test taker, add the following:
+              ```
+              requested,
+              toGrade,
+              completed
+              ```
+              (provided you did the above instructions).
+            */
           });
       })
       .then(() => {
         return this.props.firebase.doSendEmailVerification();
       })
-      /*
-        * Right here if you want to change the default user to student, add the line
-        this.props.firebase.initStudent(authUser.user.id);
-      */
       .then(() => {
         this.setState({ ...INITIAL_STATE });
         this.props.history.push(ROUTES.HOME);

@@ -5,5 +5,5 @@
 
 export const ADMIN = 'ADMIN';
 export const MOD = 'MOD';
-export const STUDENT = 'STUDENT';
+export const TEST_TAKER = 'TEST_TAKER';
 export const USER = 'USER';

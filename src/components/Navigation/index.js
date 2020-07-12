@@ -135,7 +135,7 @@ class NavigationAuth extends React.Component {
                         </div>
                   )}
                     <div className="col">
-                      <Link onClick={this.hasMoved} to={ROUTES.NULL_PATH}><h3>Moderator</h3></Link>
+                      <Link onClick={this.hasMoved} to={ROUTES.NULL_PATH}><h3>Test Taker</h3></Link>
                       <ul>
                         <li><Link onClick={this.hasMoved} to={ROUTES.NULL_PATH}>First Link</Link></li>
                         <li><Link onClick={this.hasMoved} to={ROUTES.NULL_PATH}>Second Link</Link></li>

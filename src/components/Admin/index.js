@@ -38,7 +38,7 @@ class UserListBase extends Component {
         users: usersList,
         loading: false,
         user: true,
-        student: true,
+        test_taker: true,
         admin: true,
         mod: true
       });
@@ -60,8 +60,8 @@ class UserListBase extends Component {
     if (user.roles[ROLES.MOD]) {
       return 'Moderator';
     }
-    if (user.roles[ROLES.STUDENT]) {
-      return 'Student';
+    if (user.roles[ROLES.TEST_TAKER]) {
+      return 'Test Taker';
     }
     return 'User';
   }
@@ -81,8 +81,8 @@ class UserListBase extends Component {
     if (string === 'User') {
       this.setState({user: !this.state.user});
     }
-    if (string === 'Student') {
-      this.setState({student: !this.state.student});
+    if (string === 'Test Taker') {
+      this.setState({test_taker: !this.state.test_taker});
     }
     if (string === 'Admin') {
       this.setState({admin: !this.state.admin});
@@ -94,10 +94,10 @@ class UserListBase extends Component {
 
   render() {
     const loading = this.state.loading;
-    let admin, mod, student, user = [];
+    let admin, mod, test_taker, user = [];
     admin = this.getArray('Admin');
     mod = this.getArray('Moderator');
-    student = this.getArray('Student');
+    test_taker = this.getArray('Test Taker');
     user = this.getArray('User');
     return (
       <div>
@@ -145,10 +145,10 @@ class UserListBase extends Component {
             </li>
           ))}
         </ul>
-        <button className="click-button" onClick={() => this.toggleObject('Student')}><h2> List of Enrolled Students</h2></button><br />
+        <button className="click-button" onClick={() => this.toggleObject('Test Taker')}><h2> List of Enrolled Test Takers</h2></button><br />
         {loading && <div>Loading ...</div>}
-        <ul style={{display: this.state.student ? "inline" : "none" }}>
-          {student.map(user => (
+        <ul style={{display: this.state.test_taker ? "inline" : "none" }}>
+          {test_taker.map(user => (
             <li key={user.uid}>
               <span>
                 <strong>E-Mail:</strong> {user.email}
@@ -167,7 +167,7 @@ class UserListBase extends Component {
             </li>
           ))}
         </ul>
-        <button className="click-button" onClick={() => this.toggleObject('User')}><h2>List of Non-enrolled Students</h2></button><br />
+        <button className="click-button" onClick={() => this.toggleObject('User')}><h2>List of Users</h2></button><br />
         {loading && <div>Loading ...</div>}
         <ul style={{display: this.state.user ? "inline" : "none" }}>
           {user.map(user => (
@@ -235,8 +235,8 @@ class UserItemBase extends Component {
     if (user.roles[ROLES.MOD]) {
       return 'Moderator';
     }
-    if (user.roles[ROLES.STUDENT]) {
-      return 'Student';
+    if (user.roles[ROLES.TEST_TAKER]) {
+      return 'Test Taker';
     }
     return 'User';
   }
@@ -251,12 +251,12 @@ class UserItemBase extends Component {
     if (currentRole === 'Moderator') {
       roles[ROLES.ADMIN] = 'ADMIN';
     }
-    else if (currentRole === 'Student') {
+    else if (currentRole === 'Test Taker') {
       roles[ROLES.MOD] = 'MOD';
     }
     else if (currentRole === 'User') {
-      this.props.firebase.initStudent(this.state.id);
-      roles[ROLES.STUDENT] = 'STUDENT';
+      this.props.firebase.initTestTaker(this.state.id);
+      roles[ROLES.TEST_TAKER] = 'Test Taker';
     }
     this.props.firebase.updateRoles(this.state.id, roles);
     return;
@@ -272,9 +272,9 @@ class UserItemBase extends Component {
     if (currentRole === 'Moderator') {
       delete roles[ROLES.MOD];
     }
-    else if (currentRole === 'Student') {
-      this.props.firebase.destrStudent(this.state.id);
-      delete roles[ROLES.STUDENT];
+    else if (currentRole === 'Test Taker') {
+      this.props.firebase.destrTestTaker(this.state.id);
+      delete roles[ROLES.TEST_TAKER];
     }
     else if (currentRole === 'User') {
       return;
