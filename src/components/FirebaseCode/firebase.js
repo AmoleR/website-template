@@ -65,14 +65,7 @@ import 'firebase/database';
 import 'firebase/storage';
 
 const config = {
-  apiKey: "AIzaSyDYVwwnuK0gTQsEfTZj3LPZUOMcaQtGue0",
-  authDomain: "mast-199.firebaseapp.com",
-  databaseURL: "https://mast-199.firebaseio.com",
-  projectId: "mast-199",
-  storageBucket: "mast-199.appspot.com",
-  messagingSenderId: "133479649085",
-  appId: "1:133479649085:web:4604eb12e0200a10f0ff54",
-  measurementId: "G-N8Y35YKEG3"
+//This is where you actually put in your config from firebase
 };
 
 class Firebase {
