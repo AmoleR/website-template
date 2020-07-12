@@ -1,0 +1,38 @@
+
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  text-align: center;
+}
+
+td, th {
+  border: 1px solid #000000;
+}
+
+thead {
+  font-weight: 700;
+  background-color: #e6ffe6;
+}
+
+.toGrade {
+  background-color: #afeff4;
+}
+
+.completed {
+  background-color: #e6ffe6;
+}
+
+.tableHead {
+  font-weight: 700;
+  background-color: #ccaaee!important;
+  text-align: center!important;
+}
+
+.requested {
+  background-color: #f8c8c8;
+}
+
+td .pad {
+  padding: 1em!important;
+}
